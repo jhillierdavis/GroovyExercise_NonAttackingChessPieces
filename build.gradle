@@ -1,0 +1,34 @@
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src'
+        }
+    }
+
+    test {
+        groovy {
+            srcDir 'test'
+        }
+    }
+}
+
+// Display unit test results on execution (if re-running use: gradle cleanTest test)
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.0'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
